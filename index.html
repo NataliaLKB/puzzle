@@ -13,7 +13,7 @@
         #overlay {
             position: absolute;
             text-align: center;
-            margin-left: 50px;
+            margin-left: 150px;
         }
         #artname {
             font-size: 3.5em;
@@ -28,32 +28,22 @@
         }
         #url {
             font-size: 1em;
+            margin-bottom: 8em;
         }
         #contact {
             font-size: 1em;
             margin-bottom: 8em;
+        }
+        #congrats {
+            margin-top: 10em;
         }
 
     </style>
     <title>Planet3/art//news</title>
     <script>
     // To do:
-    // - ON PUZZLE CLICK STILL FIRING WHEN INIT GAME INSTEAD OF SHUFFLEPIECES.
-    // - Testing
     // - Resize image to correspond to the height x width. 
-    // - Black background all around.
 
-        //     //tablets:
-               // 2560 x 1600
-        //     // 1920 x 1200
-        //     // 1280 x 800
-        //     // 1024 x 768
-        
-        //     //phones:
-        //     // 960 x 540
-        //     // 854 x 480
-               // 640 x 360
-        //     // 480 x 320
 
         var difficulty = 1;
         var hoverTint = '#009900';
@@ -82,22 +72,41 @@
             img = new Image();
             img.addEventListener('load',onImage,false);
           
-            img.src = "./img/tablet/Gildens233w800.jpg";
+            img.src = whichSrc();
+            console.log(whichSrc());
         }
 
         function whichSrc (){
-            if (window.innerHeight > 1599) {
-                return "./img/HD/Gildens233h1600.jpg";
-            } else 
-            if (window.innerHeight < 1599 && window.innerHeight > 1199) {
-                return "./img/tablet/Gildens233w1200.jpg";
-            } else 
-            if (window.innerHeight < 1199 && window.innerHeight > 799) {
-                return "./img/tablet/Gildens233w800.jpg";
-            } else 
-            if (window.innerHeight < 799 && window.innerHeight > 760) {
-                return "./img/tablet/Gildens233w768.jpg";
+            if (levelCounter === 1) {
+                return "./img/tablet/Staircase800.jpg";
+            } else if (levelCounter === 2) {
+                return "./img/tablet/TowerGreen800.jpg";
+            } else if (levelCounter === 3) {
+                return "./img/tablet/GlasgowWindowOchre800.jpg";
+            } else if (levelCounter === 4) {
+                return "./img/tablet/DoorWayWhite800.jpg";
+            } else if (levelCounter === 5) {
+                return "./img/tablet/SussexStepsPink800.jpg";
+            } else if (levelCounter === 6) {
+                return "./img/tablet/Mannequin800.jpg";
+            } else if (levelCounter === 7) {
+                return "./img/tablet/SussexOrangew800.jpg";
+            } else {
+                return "./img/tablet/SussexStepGreen800.jpg";
             }
+
+            // if (window.innerHeight > 1599) {
+            //     return "./img/HD/Gildens233h1600.jpg";
+            // } else 
+            // if (window.innerHeight < 1599 && window.innerHeight > 1199) {
+            //     return "./img/tablet/Gildens233w1200.jpg";
+            // } else 
+            // if (window.innerHeight < 1199 && window.innerHeight > 799) {
+            //     return "./img/tablet/Gildens233w800.jpg";
+            // } else 
+            // if (window.innerHeight < 799 && window.innerHeight > 760) {
+            //     return "./img/tablet/Gildens233w768.jpg";
+            // }
         }
 
         function onImage (){
@@ -126,45 +135,44 @@
             currentPiece = null;
             currentDropPiece = null;
             stage.drawImage(img, 0, 0, puzzleWidth, puzzleHeight, 0, 0, puzzleWidth, puzzleHeight);
+            console.log(levelCounter);
             if (levelCounter === 1) {
                 createTitle("Click to Start");
                 buildPieces();
                 //resets movesCounter between levels
                 movesCounter = 0;
-            } else {
-                createDomMessage("<p id='artname' class='deleteMe'>A Mother and Child</p>");
-                createDomMessage("<p id='name' class='deleteMe'>Albert Gleizes, 1881 - 1953</p>");
+            } else if (levelCounter === 2){
                 setTimeout(function() {
-                    createDomMessage("<p id='description' class='deleteMe'>Painter and cubism theorist</p><br>");
-                }, 500)
-                setTimeout(function() {
-                    createDomMessage("<p id='url' class='deleteMe'>www.gildensarts.com/</p><br>");
-                }, 1000)
-                setTimeout(function() {
-                    createDomMessage("<p id='contact' class='deleteMe'>info@gildensarts.com</p><br>");
-                }, 1000)
-                setTimeout(function() {
-                    createDomMessage("<p class='deleteMe'>Congratulations! You finished Level " + 
+                    createDomMessage("<p id='congrats' class='deleteMe'>Congratulations! You finished Level " + 
                     (levelCounter - 1) + " in " + movesCounter + " moves!</p>");
                     createDomMessage("<p class='deleteMe'>Ready for the Next Puzzle?</p>");
 
                     buildPieces();
                     //resets movesCounter between levels
                     movesCounter = 0;
-                }, 1500)
+                }, 500)
+                createTitle("Click to Start");
+            } else {
+                createDomMessage("<p class='deleteMe'>Congratulations! You finished Level " + 
+                (levelCounter - 1) + " in " + movesCounter + " moves!</p>");
+                createDomMessage("<p class='deleteMe'>Ready for the Next Puzzle?</p>");
+
+                buildPieces();
+                //resets movesCounter between levels
+                movesCounter = 0;
                 createTitle("Click to Start");
             }
         }
         function createDomMessage (message) {
 
-            var overlayWidth = img.width - 100;
-            var overlayHeight = img.height - 200;
+            var overlayWidth = img.width - 300;
+            var overlayHeight = img.height - 300;
 
             document.getElementById("overlay").style.width = overlayWidth + "px";
             document.getElementById("overlay").style.height = overlayHeight + "px";
 
-            document.getElementById("overlay").style["top"] = "50px";
-            document.getElementById("overlay").style["background-color"] = "rgba(0,0,0,0.4)";
+            document.getElementById("overlay").style["top"] = "150px";
+            document.getElementById("overlay").style["background-color"] = "rgba(0,0,0,0.6)";
 
             var parser = new DOMParser()
             var parsedHtml = parser.parseFromString(message, "text/html");
@@ -190,9 +198,9 @@
 
         function createTitle (message){
             stage.fillStyle = "#000000";
-            stage.globalAlpha = .4;
-            stage.fillRect(50,puzzleHeight - 40,puzzleWidth - 100,100);
-            stage.fillStyle = "#FFFFFF";
+            stage.globalAlpha = 0.8;
+            stage.fillRect(150,puzzleHeight - 40,puzzleWidth - 300,100);
+            stage.fillStyle = "#ffffff";
             stage.globalAlpha = 1;
             stage.textAlign = "center";
             stage.textBaseline = "middle";
@@ -431,10 +439,12 @@
                 console.log("GameOver touchend")
             });
 
-            if (levelCounter < 6 ) {
-                init();
+            if (levelCounter === 8 ) {
+                createDomMessage("<p class='deleteMe'>You Won the Game!</p>");
+                createDomMessage("<p class='deleteMe'>You finished Level " + 
+                (levelCounter) + " in " + movesCounter + " moves!</p>");
             } else {
-                createMessage("You Won the Game!");
+                init();
             }
         }
         function shuffleArrayPieces (pieces){
