@@ -75,21 +75,6 @@
             img.src = "./img/tablet/SussexOrangew800.jpg";
         }
 
-        // function whichSrc (){
-        //     // if (window.innerHeight > 1599) {
-        //     //     return "./img/HD/Gildens233h1600.jpg";
-        //     // } else 
-        //     // if (window.innerHeight < 1599 && window.innerHeight > 1199) {
-        //     //     return "./img/tablet/Gildens233w1200.jpg";
-        //     // } else 
-        //     // if (window.innerHeight < 1199 && window.innerHeight > 799) {
-        //     //     return "./img/tablet/Gildens233w800.jpg";
-        //     // } else 
-        //     // if (window.innerHeight < 799 && window.innerHeight > 760) {
-        //     //     return "./img/tablet/Gildens233w768.jpg";
-        //     // }
-        // }
-
         function onImage (){
             pieceWidth = Math.floor(img.width / difficulty)
             pieceHeight = Math.floor(img.height / difficulty)
@@ -423,7 +408,7 @@
                 console.log("GameOver")
             });
 
-            if (levelCounter === 6 ) {
+            if (levelCounter === 5 ) {
                 createDomMessage("<p id='artname' class='deleteMe'>Stairs</p>");
                 createDomMessage("<p id='name' class='deleteMe'>M E Pettigrew</p>");
                 createDomMessage("<p id='description' class='deleteMe'>Active in London. Inspired in Berlin. Glasgow. Brighton</p><br>");
