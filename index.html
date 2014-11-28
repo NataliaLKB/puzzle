@@ -72,42 +72,23 @@
             img = new Image();
             img.addEventListener('load',onImage,false);
           
-            img.src = whichSrc();
-            console.log(whichSrc());
+            img.src = "./img/tablet/SussexOrangew800.jpg";
         }
 
-        function whichSrc (){
-            if (levelCounter === 1) {
-                return "./img/tablet/Staircase800.jpg";
-            } else if (levelCounter === 2) {
-                return "./img/tablet/TowerGreen800.jpg";
-            } else if (levelCounter === 3) {
-                return "./img/tablet/GlasgowWindowOchre800.jpg";
-            } else if (levelCounter === 4) {
-                return "./img/tablet/DoorWayWhite800.jpg";
-            } else if (levelCounter === 5) {
-                return "./img/tablet/SussexStepsPink800.jpg";
-            } else if (levelCounter === 6) {
-                return "./img/tablet/Mannequin800.jpg";
-            } else if (levelCounter === 7) {
-                return "./img/tablet/SussexOrangew800.jpg";
-            } else {
-                return "./img/tablet/SussexStepGreen800.jpg";
-            }
-
-            // if (window.innerHeight > 1599) {
-            //     return "./img/HD/Gildens233h1600.jpg";
-            // } else 
-            // if (window.innerHeight < 1599 && window.innerHeight > 1199) {
-            //     return "./img/tablet/Gildens233w1200.jpg";
-            // } else 
-            // if (window.innerHeight < 1199 && window.innerHeight > 799) {
-            //     return "./img/tablet/Gildens233w800.jpg";
-            // } else 
-            // if (window.innerHeight < 799 && window.innerHeight > 760) {
-            //     return "./img/tablet/Gildens233w768.jpg";
-            // }
-        }
+        // function whichSrc (){
+        //     // if (window.innerHeight > 1599) {
+        //     //     return "./img/HD/Gildens233h1600.jpg";
+        //     // } else 
+        //     // if (window.innerHeight < 1599 && window.innerHeight > 1199) {
+        //     //     return "./img/tablet/Gildens233w1200.jpg";
+        //     // } else 
+        //     // if (window.innerHeight < 1199 && window.innerHeight > 799) {
+        //     //     return "./img/tablet/Gildens233w800.jpg";
+        //     // } else 
+        //     // if (window.innerHeight < 799 && window.innerHeight > 760) {
+        //     //     return "./img/tablet/Gildens233w768.jpg";
+        //     // }
+        // }
 
         function onImage (){
             pieceWidth = Math.floor(img.width / difficulty)
@@ -141,19 +122,8 @@
                 buildPieces();
                 //resets movesCounter between levels
                 movesCounter = 0;
-            } else if (levelCounter === 2){
-                setTimeout(function() {
-                    createDomMessage("<p id='congrats' class='deleteMe'>Congratulations! You finished Level " + 
-                    (levelCounter - 1) + " in " + movesCounter + " moves!</p>");
-                    createDomMessage("<p class='deleteMe'>Ready for the Next Puzzle?</p>");
-
-                    buildPieces();
-                    //resets movesCounter between levels
-                    movesCounter = 0;
-                }, 500)
-                createTitle("Click to Start");
-            } else {
-                createDomMessage("<p class='deleteMe'>Congratulations! You finished Level " + 
+            } else (levelCounter === 2){
+                createDomMessage("<p id='congrats' class='deleteMe'>Congratulations! You finished Level " + 
                 (levelCounter - 1) + " in " + movesCounter + " moves!</p>");
                 createDomMessage("<p class='deleteMe'>Ready for the Next Puzzle?</p>");
 
@@ -430,16 +400,16 @@
             }
         }
         function gameOver (){
-            console.log("gameover");
+            console.log("levelover");
             document.onmousedown = null;
             document.onmousemove = null;
             document.onmouseup = null;
             //do I need touch options for above?
             document.addEventListener('touchend', function() {
-                console.log("GameOver touchend")
+                console.log("GameOver")
             });
 
-            if (levelCounter === 8 ) {
+            if (levelCounter === 6 ) {
                 createDomMessage("<p class='deleteMe'>You Won the Game!</p>");
                 createDomMessage("<p class='deleteMe'>You finished Level " + 
                 (levelCounter) + " in " + movesCounter + " moves!</p>");
