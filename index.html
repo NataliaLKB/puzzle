@@ -35,7 +35,10 @@
             margin-bottom: 8em;
         }
         #congrats {
-            margin-top: 10em;
+            margin-top: 18em;
+        }
+        #finished-level {
+            margin-top: 5em;
         }
 
     </style>
@@ -74,21 +77,6 @@
           
             img.src = "./img/tablet/SussexOrangew800.jpg";
         }
-
-        // function whichSrc (){
-        //     // if (window.innerHeight > 1599) {
-        //     //     return "./img/HD/Gildens233h1600.jpg";
-        //     // } else 
-        //     // if (window.innerHeight < 1599 && window.innerHeight > 1199) {
-        //     //     return "./img/tablet/Gildens233w1200.jpg";
-        //     // } else 
-        //     // if (window.innerHeight < 1199 && window.innerHeight > 799) {
-        //     //     return "./img/tablet/Gildens233w800.jpg";
-        //     // } else 
-        //     // if (window.innerHeight < 799 && window.innerHeight > 760) {
-        //     //     return "./img/tablet/Gildens233w768.jpg";
-        //     // }
-        // }
 
         function onImage (){
             pieceWidth = Math.floor(img.width / difficulty)
@@ -137,7 +125,7 @@
                 createDomMessage("<p id='description' class='deleteMe'>Active in London. Inspired in Berlin. Glasgow. Brighton</p><br>");
                 createDomMessage("<p id='description' class='deleteMe'>Translates color and space into 2D screenprints and 3D pieces</p><br>");
 
-                createDomMessage("<p class='deleteMe'>Congratulations! You finished Level " + 
+                createDomMessage("<p id='finished-level' class='deleteMe'>Congratulations! You finished Level " + 
                 (levelCounter - 1) + " in " + movesCounter + " moves!</p>");
                 createDomMessage("<p class='deleteMe'>Ready for the Next Puzzle?</p>");
 
